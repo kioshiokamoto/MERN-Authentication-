@@ -23,6 +23,7 @@ const UserSchema = new mongoose.Schema({
 	resetPasswordToken: String,
 	resetPasswordExpire: Date,
 });
+
 UserSchema.pre('save', async function (next) {
 	if (!this.isModified('password')) {
 		next();
@@ -31,6 +32,10 @@ UserSchema.pre('save', async function (next) {
 	this.password = await bcrypt.hash(this.password,salt);
 	next();
 });
+
+UserSchema.methods.matchPassword = async function (password){
+	return await bcrypt.compare(password, this.password)
+}
 
 const User = new mongoose.model('User', UserSchema);
 
