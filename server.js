@@ -3,7 +3,10 @@ import dotenv from 'dotenv';
 dotenv.config({ path: './config.env' });
 
 import auth from './routes/auth.js';
+import privateRoute from './routes/private.js';
+
 import connectDB from './config/db.js';
+import errorHandler from './middleware/error.js';
 
 //Connect Db
 connectDB();
@@ -14,6 +17,10 @@ app.use(express.json());
 
 //Ruta
 app.use('/api/auth', auth);
+app.use('/api/private', privateRoute);
+//Error handler
+app.use(errorHandler);
+
 
 //Puerto
 const PORT = process.env.PORT || 5000;
