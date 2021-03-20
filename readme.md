@@ -8,15 +8,15 @@ Aplicación de autenticación desarrollada con el stack MERN (MongoDB, Express, 
 
 - Inicio de sesión
 
-  ![Demo login](./previewLogin.jpg)
+  ![Demo login](previewLogin.jpg)
 
 - Olvidé contraseña
 
-  ![Demo forgot](./previewForgot.jpg)
+  ![Demo forgot](previewForgot.jpg)
 
 - Reseteo de contraseña
 
-  ![Demo reset](./previewReset.jpg)
+  ![Demo reset](previewReset.jpg)
 
 Módulos utilizados:
 
