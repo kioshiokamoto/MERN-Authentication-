@@ -4,19 +4,19 @@ Aplicación de autenticación desarrollada con el stack MERN (MongoDB, Express, 
 
 - Registro
 
-  ![Demo registro](./previewRegistro.JPG)
+  ![Demo registro](https://raw.github.com/kioshiokamoto/MERN-Authentication-/main/screenshots/previewRegistro.JPG)
 
 - Inicio de sesión
 
-  ![Demo login](previewLogin.jpg)
+  ![Demo login](https://raw.github.com/kioshiokamoto/MERN-Authentication-/main/screenshots/previewLogin.JPG)
 
 - Olvidé contraseña
 
-  ![Demo forgot](previewForgot.jpg)
+  ![Demo forgot](https://raw.github.com/kioshiokamoto/MERN-Authentication-/main/screenshots/previewForgot.JPG)
 
 - Reseteo de contraseña
 
-  ![Demo reset](previewReset.jpg)
+  ![Demo reset](https://raw.github.com/kioshiokamoto/MERN-Authentication-/main/screenshots/previewReset.JPG)
 
 Módulos utilizados:
 
