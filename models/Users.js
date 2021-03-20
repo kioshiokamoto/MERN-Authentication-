@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
 const UserSchema = new mongoose.Schema({
 	username: {
 		type: String,
@@ -30,18 +31,27 @@ UserSchema.pre('save', async function (next) {
 		next();
 	}
 	const salt = await bcrypt.genSalt(10);
-	this.password = await bcrypt.hash(this.password,salt);
+	this.password = await bcrypt.hash(this.password, salt);
 	next();
 });
 
-UserSchema.methods.matchPassword = async function (password){
-	return await bcrypt.compare(password, this.password)
-}
+UserSchema.methods.matchPassword = async function (password) {
+	return await bcrypt.compare(password, this.password);
+};
 
-UserSchema.methods.getSignedToken = function(){
-	return jwt.sign({id:this._id},process.env.JWT_SECRET,{expiresIn:process.env.JWT_EXPIRE})
-}
+UserSchema.methods.getSignedToken = function () {
+	return jwt.sign({ id: this._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE });
+};
 
+UserSchema.methods.getResetPasswordToken = function () {
+	const resetToken = crypto.randomBytes(20).toString('hex');
+
+	this.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+
+	this.resetPasswordExpire = Date.now()+ 10 * (60 * 1000); //10 MINUTOS
+
+	return resetToken;
+};
 
 const User = new mongoose.model('User', UserSchema);
 
